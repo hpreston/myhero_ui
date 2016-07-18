@@ -25,18 +25,15 @@ angular.module('myHeroApp', [
         })
         .when('/results', {
             templateUrl: 'views/results.html',
-            controller: 'ResultsCtrl',
-            controllerAs: 'results'
+            controller: 'ResultsCtrl'
         })
         .when('/about', {
             templateUrl: 'views/about.html',
-            controller: 'AboutCtrl',
-            controllerAs: 'about'
+            controller: 'AboutCtrl'
         })
         .otherwise({
             templateUrl: 'views/main.html',
-            controller: 'MainCtrl',
-            controllerAs: 'MainCtrl'
+            controller: 'MainCtrl'
         })
 });
 

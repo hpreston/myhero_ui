@@ -4,7 +4,9 @@
     <title>MyHero Demo App</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+
 
 </head>
 
@@ -14,15 +16,15 @@
         color: #ffffff;
     }
     .bg-2 {
-        background-color: #474e5d; /* Dark Blue */
-        color: #ffffff;
+        background-color: #FFFFFF; /* White */
+        color: #999999;
     }
     .bg-3 {
         background-color: #ffffff; /* White */
         color: #555555;
     }
     .padded-container {
-        padding-top: 0px;
+        padding-top: 5px;
         padding-bottom: 20px;
     }
     .cstm-navbar {
@@ -42,6 +44,18 @@
         background-color: #2f2f2f;
         color: #ffffff;
     }
+
+    .hero-pic {
+        display: inline
+    }
+    .vote-pointer {
+        cursor: url(images/vote-pointer2.png), auto;
+    }
+    .hero-pic-mini {
+        display: inline;
+        /*width: 40%;*/
+    }
+
 </style>
 
 <body ng-app="myHeroApp">
@@ -54,40 +68,43 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Microservice Demo</a>
+            <a class="navbar-brand" href="#">MyHero</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right cstm-navbar-nav">
-                <li><a href="#">Results</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Cisco Mantl</a></li>
+                <li ><a ng-href="#/results">Results</a></li>
+                <li ><a ng-href="#">About</a></li>
+                <li ><a ng-href="#">Cisco Mantl</a></li>
             </ul>
+
         </div>
     </div>
 </nav>
-
-<div class="container-fluid bg-1 text-center">
-    <h2>Microservice Demo Application</h2>
-    <h3>Place your vote for the best onscreen Superhero!</h3>
-</div>
 
 <div class="container-fluid bg-3 text-center padded-container">
     <div ng-view=""></div>
 </div>
 
-<footer class="container-fluid bg-4 text-center">
+<footer class="container-fluid bg-2 text-center">
     <p><a href="http://github.com/hpreston/myhero_demo">MyHero Demo Application</a></p>
 </footer>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-resource.min.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
+<!--<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
+<!--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>-->
+<!--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>-->
+<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-resource.min.js"></script>-->
+
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
 
 <script src="scripts/app.js"></script>
 <script src="scripts/controllers/main.js"></script>
+<script src="scripts/controllers/results.js"></script>
 
 </body>
 </html>

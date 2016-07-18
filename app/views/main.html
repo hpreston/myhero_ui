@@ -1,8 +1,13 @@
 
+<div class="container-fluid bg-2">
+    <h3>Place your vote for the best onscreen Superhero!</h3>
+</div>
 
+<hr>
 <div class="row" ng-controller="MainCtrl">
     <div data-ng-repeat="hero in myheroOptions.options" class="col-sm-3">
-        <p>{{ hero }}</p>
-        <a ng-click="voteFunction(hero)"><img ng-src="superheropics\{{ hero }}.jpg" alt="Image" class="img-responsive" ></a>
+        <!--TODO: Find Class for centering images -->
+        <a ng-click="voteFunction(hero)"><img ng-src="superheropics\{{ hero }}.jpg" alt="Image" class="img-responsive hero-pic vote-pointer" ></a>
+        <h5>{{ hero }}</h5>
     </div>
 </div>
