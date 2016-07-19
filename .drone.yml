@@ -2,7 +2,6 @@ build:
   image: node:5
   commands:
     - curl https://api.ciscospark.com/v1/messages -X POST -H "Authorization:Bearer $$SPARK_TOKEN" --data "roomId=$$SPARK_ROOM" --data "text=Repo $CI_REPO - Drone kicking off build $CI_BUILD_NUMBER"
-    - npm install
 
 publish:
   docker:
