@@ -9,10 +9,10 @@ angular.module('myHeroApp')
         function($scope, $http) {
             $http({
                 method: 'GET',
-                // url: 'http://gsx-app.green.browndogtech.com/options',
-                url: 'http://localhost:5002/v2/results',
+                url: 'http://gsx-app.green.browndogtech.com/v2/results',
+                // url: 'http://localhost:5002/v2/results',
                 headers: {
-                    'Key': 'app'
+                    'Key': 'SecureApp'
                 }
             }).then(function(response) {
                 $scope.myheroResults = response.data;

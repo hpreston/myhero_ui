@@ -9,10 +9,10 @@ angular.module('myHeroApp')
     function($scope, $http) {
         $http({
             method: 'GET',
-            // url: 'http://gsx-app.green.browndogtech.com/options',
-            url: 'http://localhost:5002/options',
+            url: 'http://gsx-app.green.browndogtech.com/options',
+            // url: 'http://localhost:5002/options',
             headers: {
-                'Key': 'app'
+                'Key': 'SecureApp'
             }
         }).then(function(response) {
             $scope.myheroOptions = response.data;
@@ -21,10 +21,10 @@ angular.module('myHeroApp')
         $scope.voteFunction = function(hero) {
             $http({
                 method: 'POST',
-                // url: 'http://gsx-app.green.browndogtech.com/vote/' + hero,
-                url: 'http://localhost:5002/vote/' + hero,
+                url: 'http://gsx-app.green.browndogtech.com/vote/' + hero,
+                // url: 'http://localhost:5002/vote/' + hero,
                 headers: {
-                    'Key': 'app'
+                    'Key': 'SecureApp'
                 }
             });
             window.location = "#/results"
