@@ -7,7 +7,7 @@
 <div class="row" ng-controller="MainCtrl">
     <div data-ng-repeat="hero in myheroOptions.options" class="col-sm-3">
         <!--TODO: Find Class for centering images -->
-        <a ng-click="voteFunction(hero)"><img ng-src="superheropics\{{ hero }}.jpg" alt="Image" class="img-responsive hero-pic vote-pointer" ></a>
+        <a ng-click="voteFunction(hero)"><img ng-src="superheropics\{{ hero | lowercase }}.jpg" alt="Image" class="img-responsive hero-pic vote-pointer" ></a>
         <h5>{{ hero }}</h5>
     </div>
 </div>

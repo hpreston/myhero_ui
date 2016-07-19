@@ -11,7 +11,16 @@ publish:
     password: $$DOCKER_PASSWORD
     email: $$DOCKER_EMAIL
 
-
+deploy:
+  webhook:
+    image: plugins/drone-webhook
+    skip_verify: true
+    method: POST
+    auth:
+      username: $$MANTL_USERNAME
+      password: $$MANTL_PASSWORD
+    urls:
+      - https://$$MANTL_CONTROL/marathon/v2/apps/$$BRANCH/ui/restart?force=true
 
 notify:
   webhook:
@@ -30,9 +39,9 @@ notify:
       {
         "roomId": "$$SPARK_ROOM",
         {{#success build.status}}
-        "text": "Repo $CI_REPO - Drone confirms {{repo.full_name}} build {{build.number}} completed successfully.\nhttp://github.com/{{repo.full_name}}/commit/{{build.commit}}.\nhttp://$$DRONE_SERVER/{{repo.full_name}}/{{build.number}}."
+        "text": "Repo {{repo.full_name}} - Drone confirms {{repo.full_name}} build {{build.number}} completed successfully.\nhttp://github.com/{{repo.full_name}}/commit/{{build.commit}}.\nhttp://$$DRONE_SERVER/{{repo.full_name}}/{{build.number}}."
         {{else}}
-        "text": "Repo $CI_REPO - Drone blames {{build.author}} for breaking build {{build.number}}.\nhttp://github.com/{{repo.full_name}}/commit/{{build.commit}}.\nhttp://$$DRONE_SERVER/{{repo.full_name}}/{{build.number}}."
+        "text": "Repo {{repo.full_name}} - Drone blames {{build.author}} for breaking build {{build.number}}.\nhttp://github.com/{{repo.full_name}}/commit/{{build.commit}}.\nhttp://$$DRONE_SERVER/{{repo.full_name}}/{{build.number}}."
         {{/success}}
       }
 

@@ -7,7 +7,7 @@
 <div class="row" ng-controller="ResultsCtrl">
     <div data-ng-repeat="hero in myheroResults" class="col-sm-12">
         <div class="col-sm-2">
-            <img ng-src="superheropics\{{ hero[0] }}.jpg" alt="Image" class="img-responsive hero-pic-mini" >
+            <img ng-src="superheropics\{{ hero[0] | lowercase }}.jpg" alt="Image" class="img-responsive hero-pic-mini" >
         </div>
         <div class="col-sm-10">
             <div class="progress">
