@@ -13,11 +13,19 @@
  * Main module of the application.
  */
 
-angular.module('myHeroApp', [
+var app = angular.module('myHeroApp', [
     'ngRoute',
     'ngResource'
-])
-.config(function ($routeProvider) {
+]);
+
+app.constant('config', {
+    //apiURL: 'http://gsx-app.green.browndogtech.com',
+    //apiKey: 'DevApp'
+    apiURL: 'MYHERO_APP_SERVER',
+    apiKey: 'MYHERO_APP_KEY'
+});
+
+app.config(function ($routeProvider) {
     $routeProvider
         .when('/index', {
             templateUrl: 'views/main.html',

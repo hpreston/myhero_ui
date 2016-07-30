@@ -6,13 +6,12 @@
 
 angular.module('myHeroApp')
     .controller('MainCtrl',
-    function($scope, $http) {
+    function($scope, $http, config) {
         $http({
             method: 'GET',
-            // url: 'http://gsx-app.green.browndogtech.com/options',
-            url: 'http://localhost:5002/options',
+            url: config.apiURL + '/options',
             headers: {
-                'Key': 'app'
+                'Key': config.apiKey
             }
         }).then(function(response) {
             $scope.myheroOptions = response.data;
@@ -21,10 +20,9 @@ angular.module('myHeroApp')
         $scope.voteFunction = function(hero) {
             $http({
                 method: 'POST',
-                // url: 'http://gsx-app.green.browndogtech.com/vote/' + hero,
-                url: 'http://localhost:5002/vote/' + hero,
+                url: config.apiURL + '/vote/' + hero,
                 headers: {
-                    'Key': 'app'
+                    'Key': config.apiKey
                 }
             });
             window.location = "#/results"

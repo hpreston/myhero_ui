@@ -6,13 +6,12 @@
 
 angular.module('myHeroApp')
     .controller('ResultsCtrl',
-        function($scope, $http) {
+        function($scope, $http, config) {
             $http({
                 method: 'GET',
-                // url: 'http://gsx-app.green.browndogtech.com/options',
-                url: 'http://localhost:5002/v2/results',
+                url: config.apiURL + '/v2/results',
                 headers: {
-                    'Key': 'app'
+                    'Key': config.apiKey
                 }
             }).then(function(response) {
                 $scope.myheroResults = response.data;
