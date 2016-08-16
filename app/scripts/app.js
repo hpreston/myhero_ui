@@ -19,10 +19,10 @@ var app = angular.module('myHeroApp', [
 ]);
 
 app.constant('config', {
-    //apiURL: 'http://gsx-app.green.browndogtech.com',
-    //apiKey: 'DevApp'
-    apiURL: 'MYHERO_APP_SERVER',
-    apiKey: 'MYHERO_APP_KEY'
+    apiURL: 'http://gsx-app.green.browndogtech.com',
+    apiKey: 'SecureApp'
+    // apiURL: 'MYHERO_APP_SERVER',
+    // apiKey: 'MYHERO_APP_KEY'
 });
 
 app.config(function ($routeProvider) {
@@ -34,6 +34,12 @@ app.config(function ($routeProvider) {
         .when('/results', {
             templateUrl: 'views/results.html',
             controller: 'ResultsCtrl'
+        })
+        .when('/capcloud', {
+            templateUrl: 'views/capcloud.html'
+        })
+        .when('/myheroapp', {
+            templateUrl: 'views/myheroapp.html'
         })
         .when('/about', {
             templateUrl: 'views/about.html',

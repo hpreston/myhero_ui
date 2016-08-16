@@ -12,7 +12,7 @@
 
 <style>
     .bg-1 {
-        background-color: #1abc9c; /* Green */
+        background-color: #e2e2e2; /* Green */
         color: #ffffff;
     }
     .bg-2 {
@@ -68,13 +68,26 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">MyHero</a>
+            <a class="navbar-brand" href="#">
+                Superhero and Villians, Inc.
+            </a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right cstm-navbar-nav">
                 <li ><a ng-href="#/results">Results</a></li>
-                <li ><a ng-href="#">About</a></li>
-                <li ><a ng-href="#">Cisco Mantl</a></li>
+                <li ><a ng-href="#/capcloud">More about Captain Cloud</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">More Info
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li ><a ng-href="#/myheroapp">The MyHero Demo App</a></li>
+                        <li ><a ng-href="https://github.com/hpreston/myhero_demo/blob/master/README.md" target="_blank">MyHero on GitHub</a></li>
+                        <li ><a ng-href="http://ciscoshipped.io" target="_blank">Cisco Shipped</a></li>
+                        <li ><a ng-href="http://mantl.io" target="_blank">Cisco Mantl</a></li>
+                        <li ><a ng-href="http://cisco.com/go/metapod" target="_blank">Cisco Metacloud</a></li>
+                    </ul>
+                </li>
+
             </ul>
 
         </div>
@@ -86,7 +99,19 @@
 </div>
 
 <footer class="container-fluid bg-2 text-center">
-    <p><a href="http://github.com/hpreston/myhero_demo">MyHero Demo Application</a></p>
+    <!--<p><a href="http://github.com/hpreston/myhero_demo">MyHero Demo Application</a></p>-->
+    <!--<p>Superhero and Villians, Inc - <em>Making wearing costumes cool again!</em></p>-->
+
+    <div class="row">
+        <div class="col-sm-6" align="right">
+            <img src="images/s_n_v_logo.png"
+                 class="img-responsive" width="200"
+            >
+        </div>
+        <div class="col-sm-6" align="left" style="vertical-align: middle; display: inline-block">
+            <em>- Making wearing costumes cool again!</em>
+        </div>
+    </div>
 </footer>
 
 
