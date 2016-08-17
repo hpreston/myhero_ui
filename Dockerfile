@@ -1,12 +1,5 @@
-FROM nginx
-COPY ./app /usr/share/nginx/html
+FROM hpreston/myhero_ui:gsx
 
-COPY ./env_setup.sh /root
-RUN chmod +x /root/env_setup.sh
-
-#RUN echo $$BUILD_NUMBER
-#RUN echo $$BUILD_NUMBER >> /usr/share/nginx/html/build.txt
-
-EXPOSE 80
-
-CMD ["/root/env_setup.sh"]
+ENV myhero_spark_server="http://gsx-spark.green.browndogtech.com" \
+    myhero_app_server="http://gsx-app.green.browndogtech.com" \
+    myhero_app_key="SecureApp"
