@@ -12,7 +12,7 @@ angular.module('myHeroApp')
                     method: 'GET',
                     url: config.apiSpark + '/hello/' + $scope.email
                 });
-                // window.location = "#/results";
+                window.location = "#/results";
             };
         }
     );
