@@ -19,8 +19,7 @@ var app = angular.module('myHeroApp', [
 ]);
 
 app.constant('config', {
-    //apiURL: 'http://gsx-app.green.browndogtech.com',
-    //apiKey: 'DevApp'
+    apiSpark: 'MYHERO_SPARK_SERVER',
     apiURL: 'MYHERO_APP_SERVER',
     apiKey: 'MYHERO_APP_KEY'
 });
@@ -35,9 +34,19 @@ app.config(function ($routeProvider) {
             templateUrl: 'views/results.html',
             controller: 'ResultsCtrl'
         })
+        .when('/capcloud', {
+            templateUrl: 'views/capcloud.html'
+        })
+        .when('/myheroapp', {
+            templateUrl: 'views/myheroapp.html'
+        })
         .when('/about', {
             templateUrl: 'views/about.html',
             controller: 'AboutCtrl'
+        })
+        .when('/demos', {
+            templateUrl: 'views/demos.html',
+            controller: 'DemosCtrl'
         })
         .otherwise({
             templateUrl: 'views/main.html',
