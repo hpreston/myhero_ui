@@ -1,13 +1,28 @@
 
-<div class="container-fluid bg-2">
-    <h3>Place your vote for the best onscreen Superhero!</h3>
+
+<div class="container bg-2">
+    <h3>Make your voice heard!</h3>
+    <p>
+        Here at Superhero and Villians, Inc, we highly value
+        our customer opinions when deciding what hero's should
+        star in our next movie or comic.  Please take a moment
+        and place your vote for who YOU think deserves a place
+        at the top.
+    </p>
 </div>
 
 <hr>
+<div class="container-fluid">
 <div class="row" ng-controller="MainCtrl">
-    <div data-ng-repeat="hero in myheroOptions.options" class="col-sm-3">
-        <!--TODO: Find Class for centering images -->
-        <a ng-click="voteFunction(hero)"><img ng-src="superheropics\{{ hero | lowercase }}.jpg" alt="Image" class="img-responsive hero-pic vote-pointer" ></a>
-        <h5>{{ hero }}</h5>
+    <div data-ng-repeat="hero in myheroOptions.options"
+         class="col-sm-2 padded-container">
+        <a ng-click="voteFunction(hero)">
+            <img ng-src="superheropics\{{ hero | lowercase }}.jpg"
+                 alt="{{ hero | lowercase }}"
+                 width="300"
+                 class="img-responsive hero-pic vote-pointer" >
+        </a>
+        <!--<h5>{{ hero }}</h5>-->
     </div>
+</div>
 </div>
