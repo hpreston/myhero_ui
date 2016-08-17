@@ -1,0 +1,32 @@
+
+<div class="container-fluid bg-2 text-center" ng-controller="DemosCtrl">
+    <h3>Choose your Demo Experience</h3>
+    <div class="row">
+        <div class="col-sm-6">
+            <h4>Vote via Web</h4>
+            <div align="center">
+                <a href="#/">
+                <img class="img-responsive thumbnail"
+                     width="200"
+                     src="images/mobile-web.png">
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <h4>Vote via Cisco Spark</h4>
+            <div align="center">
+                <form>
+                    Enter your email: <br>
+                    <input type="text" ng-model="email">
+                    <img class="img-responsive"
+                         width="30"
+                         style="display: inline"
+                         ng-click="sparkmsg()"
+                         src="images/spark_logo.png">
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
