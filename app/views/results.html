@@ -17,10 +17,10 @@
                          aria-valuenow="40"
                          aria-valuemin="0"
                          aria-valuemax="100"
-                         ng-style="{ width : ((hero[1]/totalVotes)*100) + '%' }">
+                         ng-style="{ width : hero[2] + '%' }">
                     </div>
                 </div>
-                <h3>{{ hero[0] }}: {{ (hero[1]/totalVotes)*100 | number: 0 }}%</h3>
+                <h3>{{ hero[0] }}: {{ hero[2] | number: 0 }}%</h3>
 
             </div>
 
