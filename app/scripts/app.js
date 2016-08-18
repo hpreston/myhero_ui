@@ -19,12 +19,9 @@ var app = angular.module('myHeroApp', [
 ]);
 
 app.constant('config', {
-    apiSpark: 'http://gsx-spark.green.browndogtech.com',
-    apiURL: 'http://gsx-app.green.browndogtech.com',
-    apiKey: 'SecureApp'
-    // apiSpark: 'MYHERO_SPARK_SERVER',
-    // apiURL: 'MYHERO_APP_SERVER',
-    // apiKey: 'MYHERO_APP_KEY'
+    apiSpark: 'MYHERO_SPARK_SERVER',
+    apiURL: 'MYHERO_APP_SERVER',
+    apiKey: 'MYHERO_APP_KEY'
 });
 
 app.config(function ($routeProvider) {
