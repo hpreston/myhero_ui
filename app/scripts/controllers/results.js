@@ -15,7 +15,7 @@ angular.module('myHeroApp')
                 }
             }).then(function(response) {
                 $scope.myheroResults = response.data;
-                $scope.totalVotes = response.headers("Total Votes");
+                // $scope.totalVotes = response.headers("Total Votes");
             });
         }
     );
