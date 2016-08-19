@@ -14,6 +14,13 @@ angular.module('myHeroApp')
                 });
                 window.location = "#/results";
             };
+            $scope.tropomsg = function() {
+                $http({
+                    method: 'GET',
+                    url: config.apiTropo + '/hello/' + $scope.mobilenumber
+                });
+                window.location = "#/results";
+            };
         }
     );
 
