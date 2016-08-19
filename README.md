@@ -1,18 +1,19 @@
-**In Development... not ready for widespread use**
-
 # MyHero UI Service
 
 This is the FrontEnd UI Service for a basic microservice demo application.
+
 This provides an alternative web front end to the original [hpreston/myhero_web](https://github.com/hpreston/myhero_web) into a voting system where users can vote for their favorite movie superhero.  
 
 This UI is built with AngularJS and Bootstrap to provide a more Cloud Native style frontend.  
 
 Details on deploying the entire demo to a Mantl cluster can be found at
+
 * MyHero Demo - [hpreston/myhero_demo](https://github.com/hpreston/myhero_demo)
 
 The application was designed to provide a simple demo for Cisco Mantl.  It is written as a simple Python Flask application and deployed as a docker container.
 
 Other services are:
+
 * Data - [hpreston/myhero_data](https://github.com/hpreston/myhero_data)
 * App - [hpreston/myhero_app](https://github.com/hpreston/myhero_app)
 * Web - [hpreston/myhero_web](https://github.com/hpreston/myhero_web)
@@ -26,10 +27,11 @@ Other services are:
 
 
 The docker containers are available at
+
 * Data - [hpreston/myhero_data](https://hub.docker.com/r/hpreston/myhero_data)
 * App - [hpreston/myhero_app](https://hub.docker.com/r/hpreston/myhero_app)
 * Web - [hpreston/myhero_web](https://hub.docker.com/r/hpreston/myhero_web)
-* UI - [hpreston/myhero_web](https://hub.docker.com/r/hpreston/myhero_ui)
+* UI - [hpreston/myhero_ui](https://hub.docker.com/r/hpreston/myhero_ui)
 * Ernst - [hpreston/myhero_ernst](https://hub.docker.com/r/hpreston/myhero_ernst)
   * Optional Service used along with an MQTT server when App is in "queue" mode
 * Spark Bot - [hpreston/myhero_spark](https://hub.docker.com/r/hpreston/myhero_spark)
@@ -37,38 +39,76 @@ The docker containers are available at
 * Tropo App - [hpreston/myhero_tropo](https://hub.docker.com/r/hpreston/myhero_tropo)
   * Optional Service that allows voting through TXT/SMS messaging
 
-## Basic Application Details
-
-Required
-
 
 # Environment Installation
+
+The MyHero-UI service is built on AngularJS and leverages npm to install dependencies.  You'll want to have [Node.js](https://nodejs.org/en/download) installed if you plan to run locally, that is **NOT** within the Docker Container model.  
 
 
 # Basic Usage
 
-**UPDATE FOR Angular Container**
+## Docker Container
 
-In order to run, the service needs 2 pieces of information to be provided:
-* App Server Address
-* App Server Authentication Key to Use
+The best option for running the service is as a Docker Container.  This removes the need to install Node on your local machine or edit any configuration files.  
 
-These details can be provided in one of three ways.
-* As a command line argument
-  - `python myhero_web/myhero_web.py --app "http://myhero-web.server.com" --appkey "APP AUTH KEY" `
-* As environment variables
-  - `export myhero_app_server="http://myhero-app.server.com"`
-  - `export myhero_app_key="APP AUTH KEY"`
-  - `python myhero_web/myhero_web.py`
-* As raw input when the application is run
-  - `python myhero_web/myhero_web.py`
-  - `What is the app server address? http://myhero-app.server.com`
-  - `App Server Key: APP AUTH KEY`
+After cloning the repository and entering the directory.  You can build the container like this: 
 
-A command line argument overrides an environment variable, and raw input is only used if neither of the other two options provide needed details.
+```
+docker build -t myhero_ui:local . 
+```
 
+This will create a new docker image on your local machine for the service.  You can verify like this: 
+
+```
+docker images 
+
+# OUTPUT
+REPOSITORY                                     TAG                 IMAGE ID            CREATED             SIZE
+myhero_ui                                      local               304e562b0ba0        5 seconds ago       184.8 MB
+```
+
+To run the container, a few pieces of information need to be provided.  This includes: 
+
+* Required
+	* Address of the MyHero_App service
+	* Authentication Key of the MyHero_App service
+* Optional - if used in your deployment 
+	* Address of the MyHero_Spark Service
+	* Address of the MyHero_Tropo Service 
+
+**_Note: the addresses for the App, Spark, and Tropo services will be in the format of "http://app.domain".  If you are running the services all locally on your machine, they would be similar to "http://localhost:15001"._**
+
+You provide this information as environment variables to the container.  These commands are an example: 
+
+```
+# First set some local environment variables for the details needed
+export MYHERO_APP_SERVER=<your app server address> 
+export MYHERO_APP_KEY=<your app server key>
+export MYHERO_SPARK_SERVER=<your spark bot address>
+export MYHERO_TROPO_SERVER=<your tropo app address> 
+
+# This command will start a container and connect to the terminal so you can watch it
+docker run -it \
+	-e myhero_app_server=$MYHERO_APP_SERVER \
+	-e myhero_app_key=$MYHERO_APP_KEY \
+	-e myhero_spark_server=$MYHERO_SPARK_SERVER \
+	-e myhero_tropo_server=$MYHERO_TROPO_SERVER \
+	-p 8080:80 \
+	myhero_ui:local
+
+# OUTPUT
+Configuring UI to use APP Server: <your app server address>
+
+Starting Web Server
+172.17.0.1 - - [19/Aug/2016:14:12:01 +0000] "GET / HTTP/1.1" 200 4839 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.7 (KHTML, like Gecko) Version/9.1.2 Safari/601.7.7" "-"
+
+```
 
 # Accessing
+
+Once started up, you can browse on your local machine to `http://localhost:8080` to open the site.  Should look something like this.  
+
+![ui](web_ui_pic.jpg) 
 
 
 # Local Development with Vagrant
@@ -76,10 +116,11 @@ A command line argument overrides an environment variable, and raw input is only
 I've included the configuration files needed to do local development with Vagrant in the repo.  Vagrant will still use Docker for local development and is configured to spin up a CentOS7 host VM for running the container.
 
 To start local development run:
+
 * `vagrant up`
   * You may need to run this twice.  The first time to start the docker host, and the second to start the container.
-* Now you can interact with the API or interface at localhost:15002 (configured in Vagrantfile and Vagrantfile.host)
-  * example:  from your local machine open http://localhost:15002 in a web browser
+* Now you can the web page at localhost:15080 (configured in Vagrantfile and Vagrantfile.host)
   * Environment Variables are configured in Vagrantfile for development
+  * In development, the Spark and Tropo connections for demos will NOT work.  This is because of the challenges with developing those bots locally because of the need for the cloud services to access your service.  See those repo READMEs for more details.  
 
 Each of the services in the application (i.e. myhero_web, myhero_app, and myhero_data) include Vagrant support to allow working locally on all three simultaneously.
