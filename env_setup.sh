@@ -1,7 +1,7 @@
 #!/bin/sh -e
 
 echo "Configuring UI to use APP Server: $myhero_app_server"
-sed -i -e 's#MYHERO_TROPP_SERVER#'"$myhero_tropo_server"'#g' /usr/share/nginx/html/scripts/app.js
+sed -i -e 's#MYHERO_TROPO_SERVER#'"$myhero_tropo_server"'#g' /usr/share/nginx/html/scripts/app.js
 sed -i -e 's#MYHERO_SPARK_SERVER#'"$myhero_spark_server"'#g' /usr/share/nginx/html/scripts/app.js
 sed -i -e 's#MYHERO_APP_SERVER#'"$myhero_app_server"'#g' /usr/share/nginx/html/scripts/app.js
 sed -i -e 's/MYHERO_APP_KEY/'"$myhero_app_key"'/g' /usr/share/nginx/html/scripts/app.js
