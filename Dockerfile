@@ -1,4 +1,4 @@
-FROM hpreston/myhero_ui:gsx
+FROM hpreston/myhero_ui:latest
 EXPOSE 80
 
 ENV myhero_spark_server="http://gsx-spark.green.browndogtech.com" \
