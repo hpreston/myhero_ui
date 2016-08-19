@@ -7,3 +7,4 @@ tmp
 .idea
 .vagrant
 drone-secrets.yml
+app-local.js

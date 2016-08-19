@@ -42,7 +42,7 @@ The docker containers are available at
 
 # Environment Installation
 
-The MyHero-UI service is built on AngularJS and leverages npm to install dependencies.  You'll want to have [Node.js](https://nodejs.org/en/download) installed if you plan to run locally, that is **NOT** within the Docker Container model.  
+The MyHero-UI service is built on AngularJS and leverages npm to install dependencies and local execution.  You'll want to have [Node.js](https://nodejs.org/en/download) installed if you plan to run locally, that is **NOT** within the Docker Container model.  
 
 
 # Basic Usage
@@ -108,7 +108,7 @@ Starting Web Server
 
 Once started up, you can browse on your local machine to `http://localhost:8080` to open the site.  Should look something like this.  
 
-![ui](web_ui_pic.jpg) 
+![ui](resources/web_ui_pic.jpg) 
 
 
 # Local Development with Vagrant
