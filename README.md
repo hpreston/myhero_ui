@@ -2,6 +2,8 @@
 
 This is the FrontEnd UI Service for a basic microservice demo application.
 
+![ui](resources/web_ui_pic.jpg) 
+
 This provides an alternative web front end to the original [hpreston/myhero_web](https://github.com/hpreston/myhero_web) into a voting system where users can vote for their favorite movie superhero.  
 
 This UI is built with AngularJS and Bootstrap to provide a more Cloud Native style frontend.  
