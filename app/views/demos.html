@@ -2,29 +2,64 @@
 <div class="container-fluid bg-2 text-center" ng-controller="DemosCtrl">
     <h3>Choose your Demo Experience</h3>
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-4 padded-container">
             <h4>Vote via Web</h4>
             <div align="center">
                 <a href="#/">
                 <img class="img-responsive thumbnail"
                      width="200"
-                     src="images/mobile-web.png">
+                     src="images/mobile-web.jpg">
                 </a>
             </div>
         </div>
-        <div class="col-sm-6">
+
+        <div class="col-sm-4 padded-container">
             <h4>Vote via Cisco Spark</h4>
             <div align="center">
-                <form ng-submit="sparkmsg()">
-                    Enter your email: <br>
-                    <input type="text" ng-model="email">
-                    <img class="img-responsive"
-                         width="30"
-                         style="display: inline"
-                         ng-click="sparkmsg()"
-                         src="images/spark_logo.png">
+                <form ng-submit="sparkmsg()" role="form">
+                    <div class="form-group" align="left">
+                        <label class="control-label sr-only" for="email">Enter your Email Address: </label>
+                        <input type="email"
+                               ng-model="email"
+                               class="form-control"
+                               id="email"
+                               placeholder="Enter your email">
+                        <div align="right">
+                            <img class="img-responsive"
+                                 width="50"
+                                 style="display: inline"
+                                 ng-click="sparkmsg()"
+                                 src="images/spark_logo.png">
+                        </div>
+                        <p><em>Email must be registered with Cisco Spark</em></p>
+                    </div>
                 </form>
+            </div>
+        </div>
 
+
+        <div class="col-sm-4 padded-container">
+            <h4>Vote via Cisco Tropo</h4>
+            <div align="center">
+                <form ng-submit="tropomsg()" role="form">
+                    <div class="form-group" align="left">
+                        <label class="control-label sr-only" for="mobilenumber">Enter your Mobile Number: </label>
+                        <input type="text"
+                               ng-model="mobilenumber"
+                               class="form-control"
+                               id="mobilenumber"
+                               placeholder="Mobile Number - digits only"
+                        >
+                        <div align="right">
+                            <img class="img-responsive"
+                             width="50"
+                             style="display: inline"
+                             ng-click="tropomsg()"
+                             src="images/tropo_logo.png">
+                        </div>
+                        <p><em>US Carriers Only. <br>Numbers Only. eg "5551234567"</em></p>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

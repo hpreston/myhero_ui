@@ -1,29 +1,27 @@
 
 <div class="container bg-2">
-    <h3>Current voting results!</h3>
+    <h1>Current voting results!</h1>
 </div>
 
 <hr>
 <div class="container">
     <div class="row" ng-controller="ResultsCtrl">
-        <div data-ng-repeat="hero in myheroResults" class="col-sm-12">
-            <div class="col-sm-2">
-                <img ng-src="superheropics\{{ hero[0] | lowercase }}.jpg" alt="Image" class="img-responsive hero-pic-mini" >
-            </div>
-            <div class="col-sm-10">
+        <div data-ng-repeat="hero in myheroResults track by hero[0]" class="col-sm-4">
+                <img ng-src="superheropics\{{ hero[0] | lowercase }}.jpg"
+                     alt="{{ hero[0] }}"
+                     class="img-responsive hero-pic-mini"
+                     width="300"
+                >
+                <h4>#{{ $index +1 }}  {{ hero[0] }}: {{ hero[2] | number: 0 }}%</h4>
                 <div class="progress">
                     <div class="progress-bar progress-bar-success progress-bar-striped"
                          role="progressbar"
                          aria-valuenow="40"
                          aria-valuemin="0"
                          aria-valuemax="100"
-                         ng-style="{ width : ((hero[1]/totalVotes)*100) + '%' }">
+                         ng-style="{ width : hero[2] + '%' }">
                     </div>
                 </div>
-                <h3>{{ hero[0] }}: {{ (hero[1]/totalVotes)*100 | number: 0 }}%</h3>
-
-            </div>
-
         </div>
     </div>
 </div>
