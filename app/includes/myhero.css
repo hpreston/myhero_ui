@@ -1,0 +1,44 @@
+.bg-1 {
+    background-color: #e2e2e2; /* Green */
+    color: #ffffff;
+}
+.bg-2 {
+    background-color: #FFFFFF; /* White */
+    color: #999999;
+}
+.bg-3 {
+    background-color: #ffffff; /* White */
+    color: #555555;
+}
+.padded-container {
+    padding-top: 5px;
+    padding-bottom: 20px;
+}
+.cstm-navbar {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+    letter-spacing: 5px;
+}
+
+.cstm-navbar-nav li a:hover {
+    color: #1abc9c !important;
+}
+.bg-4 {
+    background-color: #2f2f2f;
+    color: #ffffff;
+}
+
+.hero-pic {
+    display: inline
+}
+.vote-pointer {
+    cursor: url(../images/vote-pointer2.png), auto;
+}
+.hero-pic-mini {
+    display: inline;
+    /*width: 40%;*/
+}
