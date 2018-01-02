@@ -115,13 +115,15 @@ Once started up, you can browse on your local machine to `http://localhost:8080`
 
 # Local Development with Vagrant
 
-I've included the configuration files needed to do local development with Vagrant in the repo.  Vagrant will still use Docker for local development and is configured to spin up a CentOS7 host VM for running the container.
+I've included the configuration files needed to do local development with Vagrant in the repo.  Vagrant will still use Docker for local development and requires the following be installed on your laptop: 
+
+* [Vagrant 2.0.1 or higher](https://www.vagrantup.com/downloads.html)
+* [Docker](https://www.docker.com/community-edition)
 
 To start local development run:
 
 * `vagrant up`
-  * You may need to run this twice.  The first time to start the docker host, and the second to start the container.
-* Now you can the web page at localhost:15080 (configured in Vagrantfile and Vagrantfile.host)
+* Now you can the web page at localhost:15080 (configured in Vagrantfile)
   * Environment Variables are configured in Vagrantfile for development
   * In development, the Spark and Tropo connections for demos will NOT work.  This is because of the challenges with developing those bots locally because of the need for the cloud services to access your service.  See those repo READMEs for more details.  
 
