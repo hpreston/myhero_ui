@@ -21,7 +21,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # Specify port mappings
     # If omitted, no ports are mapped!
-    docker.ports = ['80:80']
+    docker.ports = ['15080:80']
 
     # Note: links are left for reference, but as UI is a
     #   client side web app, container to container links
