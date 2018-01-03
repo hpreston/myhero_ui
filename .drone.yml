@@ -1,52 +1,26 @@
-build:
-  image: node:5
-  commands:
-    - echo "Building..."
+pipeline:
+  # integration:
+  #   image: python:2
+  #   commands:
+  #     - echo "Building"
 
-publish:
-  docker:
-    repo: $$DOCKER_USERNAME/$$DOCKER_REPO
-    tag: "$${BRANCH##feature/}"
-    username: $$DOCKER_USERNAME
-    password: $$DOCKER_PASSWORD
-    email: $$DOCKER_EMAIL
+  delivery:
+    image: plugins/docker
+    repo: hpreston/myhero_ui
+    tags: "${DRONE_COMMIT_BRANCH}"
+    secrets: [ docker_username, docker_password ]
 
-  docker:
-    repo: $$DOCKER_USERNAME/$$DOCKER_REPO
-    tag: "latest"
-    username: $$DOCKER_USERNAME
-    password: $$DOCKER_PASSWORD
-    email: $$DOCKER_EMAIL
+  deliveryprod:
+    image: plugins/docker
+    repo: hpreston/myhero_ui
+    tag: latest
     when:
-      branch: "master"
+      branch: master
+    secrets: [ docker_username, docker_password ]
 
-deploy:
-  webhook:
-    image: plugins/drone-webhook
-    skip_verify: true
-    method: POST
-    auth:
-      username: $$MANTL_USERNAME
-      password: $$MANTL_PASSWORD
-    urls:
-      - https://$$MANTL_CONTROL/marathon/v2/apps/$$BRANCH/$$MANTL_APP_NAME/restart?force=true
+  notify:
+    image: hpreston/drone-spark:0.7
+    secrets: [ SPARK_TOKEN, PERSONEMAIL ]
+    message: "Build Complete!"
     when:
-      branch: "!master"
-
-  webhook:
-    image: plugins/drone-webhook
-    skip_verify: true
-    method: POST
-    auth:
-      username: $$MANTL_USERNAME
-      password: $$MANTL_PASSWORD
-    urls:
-      - https://$$MANTL_CONTROL/marathon/v2/apps/$$MANTL_APP_NAME_DEV/restart?force=true
-    when:
-      branch: "dev"
-
-notify:
-  spark:
-    image: hpreston/drone-spark
-    auth_token: $$SPARK_TOKEN
-    roomId: $$SPARK_ROOM
+      status: [ success, failure ]
